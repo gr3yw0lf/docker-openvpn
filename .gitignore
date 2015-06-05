@@ -1,0 +1,5 @@
+certs/*.crt
+certs/*.pem
+certs/*.key
+certs/*.cnf
+certs/vars
