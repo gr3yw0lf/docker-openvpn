@@ -15,9 +15,10 @@ ADD assets /opt/docker-openvpn/bin
 RUN chmod a+x /opt/docker-openvpn/bin/*.sh \
 	&& mkdir /var/log/openvpn -p
 
-VOLUME /var/log/openvpn
+VOLUME /var/log/openvpn /usr/lib/openvpn-nl/plugins
 
 ENTRYPOINT ["/opt/docker-openvpn/bin/start.sh"]
+CMD ["openvpn"]
 
 EXPOSE 1194/udp
 
