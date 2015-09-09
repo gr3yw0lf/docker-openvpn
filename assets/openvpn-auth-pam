@@ -1,3 +1,4 @@
 auth    required        pam_unix.so    shadow    nodelay
+auth    required        pam_tally2.so deny=4 even_deny_root unlock_time=1200
+account required        pam_tally2.so
 account required        pam_unix.so
-
