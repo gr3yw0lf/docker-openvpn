@@ -8,10 +8,10 @@ if [ "$1" == "openvpn" ]; then
 	/usr/sbin/openvpn-nl --writepid /var/run/openvpn-nl.server.pid \
 		--daemon ovpn-server \
 		--cd /etc/openvpn-nl \
-		--config /etc/openvpn-nl/server.conf \
+		--config $OPENVPN_CONFIG \
 		--server $OPENVPN_NETWORK $OPENVPN_NETMASK
 
-	echo date > /var/log/openvpn/start.log
+	echo $(date) > /var/log/openvpn/start.log
 	# Forces the docker to stay running, but not fill it's log
 	tail -F /var/log/openvpn/start.log
 	exit;
@@ -26,7 +26,7 @@ if [ "$1" == "openvpn-authpam" ]; then
 		--config /etc/openvpn-nl/server-authpam.conf \
 		--server $OPENVPN_NETWORK $OPENVPN_NETMASK
 
-	echo date > /var/log/openvpn/start.log
+	echo $(date) > /var/log/openvpn/start.log
 	# Forces the docker to stay running, but not fill it's log
 	tail -F /var/log/openvpn/start.log
 	exit;

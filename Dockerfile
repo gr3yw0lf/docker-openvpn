@@ -17,8 +17,14 @@ RUN chmod a+x /opt/docker-openvpn/bin/*.sh \
 
 VOLUME /var/log/openvpn /usr/lib/openvpn-nl/plugins
 
-ENTRYPOINT ["/opt/docker-openvpn/bin/start.sh"]
-CMD ["openvpn"]
+# Assumption: full directory path gets created with ADD
+ADD service-openvpn.sh /etc/service/openvpn-nl/run
+RUN chmod a+x /etc/service/openvpn-nl/run
+
+RUN mkdir -p /dev/net \
+	&& mknod /dev/net/tun c 10 200
+
+CMD ["/sbin/my_init"]
 
 EXPOSE 1194/udp
 
