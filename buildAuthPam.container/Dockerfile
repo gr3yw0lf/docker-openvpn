@@ -1,4 +1,4 @@
-FROM gr3yw0lf/openvpn_core:working
+FROM gr3yw0lf/openvpn_core
 
 MAINTAINER Grey Whittney <grey@greywhittney.com>
 
@@ -15,9 +15,11 @@ RUN cd /src/openvpn-${openvpn_ver}/ \
 		&& autoreconf -i -v -f \
 		&& ./configure --enable-plugin-auth-pam --with-plugindir=/usr/lib/openvpn-nl/plugins/ \
 		&& cd src/plugins/auth-pam/ \
-		&& make \
-		&& make install
+		&& make 
 
+RUN echo "cd /src/openvpn-${openvpn_ver}/src/plugins/auth-pam/ && make install" > /makeInstall.sh \
+		&& chmod a+x /makeInstall.sh
 
+CMD /makeInstall.sh
 
 

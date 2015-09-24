@@ -1,4 +1,4 @@
-FROM gr3yw0lf/openvpn_core:build
+FROM gr3yw0lf/openvpn_core
 
 MAINTAINER Grey Whittney <grey@greywhittney.com>
 
