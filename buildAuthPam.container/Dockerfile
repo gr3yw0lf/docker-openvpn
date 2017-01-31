@@ -1,9 +1,9 @@
-FROM gr3yw0lf/openvpn_core
+FROM gr3yw0lf/openvpn_core:latest
 
 MAINTAINER Grey Whittney <grey@greywhittney.com>
 
-ENV openvpn_url https://github.com/OpenVPN/openvpn/archive/v2.3.7.tar.gz
-ENV openvpn_ver 2.3.7
+ENV openvpn_ver 2.3.10
+ENV openvpn_url https://github.com/OpenVPN/openvpn/archive/v${openvpn_ver}.tar.gz
 
 RUN apt-get update \
 		&& apt-get -y install g++ git make libpam0g-dev automake libtool openssl libssl-dev liblzo2-dev \
